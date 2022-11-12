@@ -2,26 +2,31 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const Pokemon = () => {
-    const [listPokemons, setListPokemons] = useState([])
+    const [listPokemons, setListPokemons] = useState()
     const [loading, setLoading] = useState(true)
 
-    async function getPokemons() {
-        try {
-          const response = await axios.get('https://pokeapi.co/api/v2/pokemon/');
-          console.log(response);
-        } catch (error) {
-          console.error(error);
-        }
-    }
+    const getPokemons = async () => {
+      try {
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon/')
+
+        return response
+      } catch (error) {
+        console.error(error);
+      }
+    }    
 
     useEffect(() => {
-        getPokemons()
+      getPokemons()
+        .then(response => setListPokemons(response.data.results))
 
-        setLoading(false)
+      setLoading(false)
     }, [])
 
     return (
-        <></>
+        <>
+          <div>{ loading ? 'loading' : 'loaded'}</div>
+          <Card></Card>
+        </>
     )
 }
 
