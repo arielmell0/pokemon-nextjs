@@ -36,6 +36,7 @@ export const DivText = styled.div`
     height: 50%;
 
     background-color: black;
+    color: white;
 `
 
 export const DivImg = styled.img`
