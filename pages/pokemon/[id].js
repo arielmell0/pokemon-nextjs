@@ -4,32 +4,37 @@ import axios from "axios";
 import Card from "../../components/Card";
 
 const Pokemon = () => {
-  const router = useRouter()
-  const id = router.query.id
-  const [listPokemons, setListPokemons] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { query, isReady} = useRouter()
+  const id = query.id
+  const [listPokemons, setListPokemons] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    if(!isReady) return
+
     const getPokemons = async () => {
       try {
-        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        setLoading(false)
 
-        return response;
+        return response
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
     };
 
     getPokemons()
-      .then((response) => setListPokemons(response.data));
-
-    setLoading(false);
-  }, []);
+      .then(response => setListPokemons(response.data))
+  }, [isReady]);
 
   return (
     <>
-      <Card text={listPokemons.name} />
-      <button onClick={() => console.log(listPokemons)}>console aqui</button>
+      { 
+        loading ?
+        <div>'loading'</div> :
+        <Card text={listPokemons.name} img={listPokemons.sprites.front_default}/>
+      }
+      <button onClick={() => console.log(listPokemons)}>clique aqui</button>
     </>
   );
 };
