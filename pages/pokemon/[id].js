@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Card from "../../components/Card";
+import Card from "../../components/Primitives/Card";
 
 const Pokemon = () => {
-  const { query, isReady} = useRouter()
+  const { query, isReady } = useRouter()
   const id = query.id
   const [listPokemons, setListPokemons] = useState([])
   const [loading, setLoading] = useState(true)

@@ -1,35 +1,26 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-color: white;
-
-    width: 100vw;
-    height: 100vh;
-`
-
 export const DivCard = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 
-    width: 10%;
-    height: 30%;
+    width: 10vw;
+    height: 30vh;
 
     background-color: white;
 
     border: 2px solid black;
+
+    margin: 4%;
 `
 
 export const DivText = styled.div`
     display: flex;
 
+    justify-content: center;
     align-items: center;
-
     text-align: center;
 
     width: 100%;
