@@ -1,5 +1,6 @@
 import PokemonCard from '../components/Custom/PokemonCard'
 import styled from 'styled-components'
+import Menu from '../components/Custom/Menu'
 
 export default function Home() {
   const renderPokemons = () => {
@@ -16,6 +17,7 @@ export default function Home() {
 
   return (
     <Container>
+      <Menu />
       {
         renderPokemons()
       }
