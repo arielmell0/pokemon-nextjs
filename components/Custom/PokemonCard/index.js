@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Card from "../primitives/Card";
-import loading from '../../assets/svg/loading.svg'
+import Card from "../../primitives/Card";
+import loading from '../../../assets/svg/loading.svg'
 
 const PokemonCard = (props) => {
   const [listPokemons, setListPokemons] = useState([])
